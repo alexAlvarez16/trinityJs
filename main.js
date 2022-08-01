@@ -42,8 +42,6 @@ var lexUserId = 'chatbot-demo' + Date.now();
 var sessionAttributes = {};
 var responseCardOptions = null;
 
-alert(cfgAWSIdentityPoolId)
-
 //document.getElementById("userName").innerHTML ='Usuario';
 document.getElementById("wisdom").focus();
 document.getElementById("botonTerminar").disabled = true;
@@ -70,7 +68,7 @@ function showImageModal(imgurl) {
     document.getElementById("botImgModal").style.display = "block"
     document.getElementById("botImgModal").classList.add("show")
 }
-var spanModalClose = document.getElementsByClassName("closeModal")[0];
+var spanModalClose = document.getElementsByClassName("close")[0];
 spanModalClose.onclick = function() {
     document.getElementById("backdrop").style.display = "none"
     document.getElementById("botImgModal").style.display = "none"
