@@ -7,7 +7,7 @@ setInterval(function() {
     {
         agentTyping()
     }
- }, cfgTypingInterval);
+ }, 120000 );//cfgTypingInterval);
  
 
 //FUNCINO PARA INICIAR LLAMADA EN AWS CONNECT
