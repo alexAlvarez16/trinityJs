@@ -7,7 +7,7 @@ AWS.config.update({
     accessKeyId: cfgAWSaccessKeyId,
     secretAccessKey: cfgAWSsecretAccessKey,    
 });
-let connect = new AWS.Connect();
+//let connect = new AWS.Connect();
 let connectparticipant = new AWS.ConnectParticipant();
 let participantToken;
 let agente = null;
