@@ -105,7 +105,6 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
                 scrollChatBot.scrollTop = scrollChatBot .scrollHeight;
                 var scrollChatBot2 = document.getElementById('conversation');
                 scrollChatBot2.scrollTop = scrollChatBot2 .scrollHeight;
-                var lexruntime = new AWS.LexRuntime();
                 lexruntime.postText(params, function (err, data) {
                 if (err) {
                 showError('Perdona, no encontre información acerca de lo que pediste, intenta de nuevo');
