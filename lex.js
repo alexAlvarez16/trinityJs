@@ -8,7 +8,7 @@ function enviarAyuda(textToPush, labelToShow, shouldHideRequest){
     inputText: textToPush ? textToPush : wisdomText,
     userId: lexUserId,
     sessionAttributes: {
-        userFullName:document.getElementById('usrFullName').innerHTMLL,
+        userFullName:document.getElementById('usrFullName').innerHTML,
         userFirstName:document.getElementById('usrFirstName').innerHTML,
         userEmail: document.getElementById('usrEmail').innerHTML
 
