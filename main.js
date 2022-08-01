@@ -37,7 +37,7 @@ AWS.config.region = cfgAWSRegion; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: cfgAWSIdentityPoolId,
   });
-alert(AWS.CognitoIdentityCredentials.region);
+alert(AWS.config.region);
 var lexruntime = new AWS.LexRuntime();
 var lexUserId = 'chatbot-demo' + Date.now();
 var sessionAttributes = {};
