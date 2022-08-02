@@ -222,10 +222,10 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
       document.getElementById("img01").src = ImagenCarta;  
 
       // title              
-      var elem = document.createElement('span');
-      elem.className = 'cardTitle';
-      elem.appendChild(document.createTextNode(card.title));
-      responsePara.appendChild(elem);
+    //   var elem = document.createElement('span');
+    //   elem.className = 'cardTitle';
+    //   elem.appendChild(document.createTextNode(card.title));
+    //   responsePara.appendChild(elem);
       
 
       // subtitle
@@ -239,6 +239,25 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
       elem.className = 'cardResponse';
       elem.innerHTML = "<p class='lexResponse'>"+ message+"</p>";
       responsePara.appendChild(elem);
+      
+    //Buttons
+    if (card.buttons) {
+        var optionsSpan = document.createElement('span');
+        optionsSpan.className = 'cardOptions';
+        responsePara.appendChild(optionsSpan);
+        // remember the responseCardOptions so we know if the user types one in
+            responseCardOptions = card.buttons;
+        for (var i = 0; i < card.buttons.length; i++){
+            var item = card.buttons[i];
+            elem = document.createElement('a');
+            elem.className = 'cardOption';
+            elem.href = '#';
+            elem.setAttribute('onclick', "postCardOption(\"" + item.text + "\", \"" + item.value + "\", this.parentNode); return false;");
+            elem.title = item.text;
+            elem.appendChild(document.createTextNode(item.text));
+            optionsSpan.appendChild(elem);
+        }
+    }
 
 
 
