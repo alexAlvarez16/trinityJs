@@ -28,8 +28,8 @@ let usrEmail=''
 
 
 
-
-
+console.log('InitChatbot')
+console.log(initChatbot)
 initCookies();
 
 
@@ -105,6 +105,7 @@ spanModalClose.onclick = function() {
 
   function initCookies(){ 
 
+if(init)
 
     //REINICIO DE VARIABLES 
     if(arrayurlWindows[arrayurlWindows.length-1].length==0)
@@ -118,7 +119,6 @@ spanModalClose.onclick = function() {
      
         transcriptiontext='';
         localStorage.setItem("transcriptiontext",'');
-
 
         chatStatusPages='0';
         setCookie("chatStatus", JSON.stringify('0'), 365); 
