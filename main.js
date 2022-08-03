@@ -105,28 +105,16 @@ spanModalClose.onclick = function() {
 
   function initCookies(){ 
 
-    /*FIX  REINICIO DE HISTORIAL*/
-    localStorage.clear()
-    htmlTxt = '<p class="lexResponse">Bienvenido a Trinity 🤖 tu asistente personal Xpertal, ¿En qué te puedo ayudar?<br></p>';
-     
-    localStorage.setItem("botHtml", htmlTxt);
-    document.getElementById('conversation').innerHTML =localStorage.getItem("botHtml");
-    
- 
-    transcriptiontext='';
-    localStorage.setItem("transcriptiontext",'');
-    //FIN RAAG REINICIO DE HISTORIAL
-    
 
     //REINICIO DE VARIABLES 
     if(arrayurlWindows[arrayurlWindows.length-1].length==0)
     {
-      /*  localStorage.clear()
+        localStorage.clear()
         htmlTxt = '<p class="lexResponse">Bienvenido a Trinity 🤖 tu asistente personal Xpertal, ¿En qué te puedo ayudar?<br></p>';
          
         localStorage.setItem("botHtml", htmlTxt);
         document.getElementById('conversation').innerHTML =localStorage.getItem("botHtml");
-        */
+        
      
         transcriptiontext='';
         localStorage.setItem("transcriptiontext",'');
