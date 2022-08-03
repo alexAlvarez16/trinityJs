@@ -26,10 +26,10 @@ let usrEmail=''
 */
 
 
+let initChatbot_=0;
 
-
-console.log('InitChatbot')
-console.log(initChatbot)
+console.log('InitChatbot_')
+console.log(initChatbot_)
 initCookies();
 
 
@@ -105,7 +105,28 @@ spanModalClose.onclick = function() {
 
   function initCookies(){ 
 
-if(init)
+if(initChatbot_==0)
+{
+    localStorage.clear()
+    htmlTxt = '<p class="lexResponse">Bienvenido a Trinity 🤖 tu asistente personal Xpertal, ¿En qué te puedo ayudar?<br></p>';
+     
+    localStorage.setItem("botHtml", htmlTxt);
+    document.getElementById('conversation').innerHTML =localStorage.getItem("botHtml");
+    
+ 
+    transcriptiontext='';
+    localStorage.setItem("transcriptiontext",'');
+
+    chatStatusPages='0';
+    setCookie("chatStatus", JSON.stringify('0'), 365); 
+    participantToken=null;
+    setCookie("participantToken", JSON.stringify(''), 365); 
+    token=null;
+    setCookie("AWSConnectionToken", JSON.stringify(''), 365);
+    initChatbot_=1
+}
+else
+{
 
     //REINICIO DE VARIABLES 
     if(arrayurlWindows[arrayurlWindows.length-1].length==0)
@@ -182,8 +203,9 @@ if(init)
 }
         
     }
-
 }
+}
+
 
 
 
