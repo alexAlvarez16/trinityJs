@@ -107,6 +107,7 @@ spanModalClose.onclick = function() {
 
 if(initChatbot_==0)
 {
+    console.log('First Load Restart Clear Storage')
     localStorage.clear()
     htmlTxt = '<p class="lexResponse">Bienvenido a Trinity 🤖 tu asistente personal Xpertal, ¿En qué te puedo ayudar?<br></p>';
      
@@ -127,7 +128,7 @@ if(initChatbot_==0)
 }
 else
 {
-
+    console.log('Normal Behiavor')
     //REINICIO DE VARIABLES 
     if(arrayurlWindows[arrayurlWindows.length-1].length==0)
     {
