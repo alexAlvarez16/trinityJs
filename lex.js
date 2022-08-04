@@ -65,7 +65,8 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
                 // this means a response card was shown to the user, but she chose to type in a response instead
                 // of clicking
                 // TODO:  hide the responseCardOptions
-                for (var i = 0; i < responseCardOptions.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+                for (var i = 0; i < responseCardOptions.length; i++) {
+                    //if (window.CP.shouldStopExecution(0)) break;
                     var item = responseCardOptions[i];
                     if (wisdom.toUpperCase() === item.text.toUpperCase()) {
                     textToPush = item.value;
@@ -74,7 +75,7 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
                     i = responseCardOptions.length + 1;
                     }
               
-                }window.CP.exitedLoop(0);
+                }//window.CP.exitedLoop(0);
                 }
                 // send it to the Lex runtime
                 var params = {
