@@ -272,8 +272,8 @@ function enviaMensajeWebsocket( mensaje ){
     }
     else{
 
-        var scrollChatBot_Refresh = document.getElementById('divScroll');
-        scrollChatBotRefresh.scrollTop = scrollChatBotRefresh.scrollHeight;
+       /* var scrollChatBot_Refresh = document.getElementById('divScroll');
+        scrollChatBotRefresh.scrollTop = scrollChatBotRefresh.scrollHeight;*/
         var scrollChatBot_Refresh_Conversation = document.getElementById('conversation');
         scrollChatBot_Refresh_Conversation.scrollTop = scrollChatBot_Refresh_Conversation.scrollHeight;
     }
@@ -347,14 +347,14 @@ function desconectarWebsocket(){
         token = null;
         ws = null;
         agente = null;
-       // chatStatus=false
+        chatStatus=false
         chatStatusPages='0';
         setCookie("chatStatus", JSON.stringify('0'), 365); 
         participantToken=null;
         setCookie("participantToken", JSON.stringify(''), 365); 
 
         if (err) console.log(err, err.stack);
-           // chatStatus=false
+            chatStatus=false
             chatStatusPages='0';
             token=null;
             setCookie("chatStatus", JSON.stringify('0'), 365); 
