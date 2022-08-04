@@ -265,7 +265,7 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
 
 
       if(typeof card.imageUrl === 'undefined' || card.imageUrl === null){
-          return
+          //return
       }
       else{
           //Video
@@ -293,7 +293,7 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
           if(card.attachmentLinkUrl=== 'undefined' || card.attachmentLinkUrl=== null){
             htmlTxt = document.getElementById('conversation').innerHTML;
             localStorage.setItem("botHtml",htmlTxt)
-              return
+              //return
           }else{
            if(card.attachmentLinkUrl.endsWith('mp4' || 'MP4' || 'MOV' || 'mov' || 'GIFT' || 'gift')){
           // boton

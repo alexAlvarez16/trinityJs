@@ -12,8 +12,11 @@ setInterval(function() {
 
 //FUNCINO PARA INICIAR LLAMADA EN AWS CONNECT
 function iniciarLlamada(){
+    chatStatus=true;
     document.getElementById("botonTerminar").disabled = true;
     document.getElementById("botonIniciar").disabled = true;
+    document.getElementById("botonTerminar").style.visibility ="visible";
+    
 
 
 //DELAY DE N SEGUNDOS PARA ESPERAR LA CONEXION CON AWS CONNECT
@@ -25,10 +28,9 @@ function iniciarLlamada(){
 
  //DE NO OBTENER RESPUESTA EN N MINUTOS, CERRAR LA CONEXION   
     setTimeout(function(){
-    if(chatStatusPages=='0')
+    if(chatStatusPages=='0' && chatStatus==true)
     { 
         desconectarWebsocket()
-    /*    
         var conversationDiv = document.getElementById('conversation');
         var responsePara = document.createElement("P");
         responsePara.className = 'lexResponse';     
@@ -37,7 +39,7 @@ function iniciarLlamada(){
         conversationDiv.appendChild(responsePara);
         var scrollChatBotConnect = document.getElementById('divScroll');
         scrollChatBotConnect.scrollTop = scrollChatBotConnect.scrollHeight;
-    */
+        chatStatus=false;
         var scrollChatBot = document.getElementById('conversation');
         scrollChatBot.scrollTop = scrollChatBot .scrollHeight;
 
@@ -47,6 +49,7 @@ function iniciarLlamada(){
         document.getElementById("botonTerminar").disabled = true;
         //document.getElementById("botonIniciar").disabled = false;
         document.getElementById("botonIniciar").disabled = true;
+        document.getElementById("botonTerminar").style.visibility ="hidden";
     }    
     }, cfgCloseConnectConection );  
 
@@ -67,7 +70,8 @@ function iniciarLlamada(){
     htmlTxt = document.getElementById('conversation').innerHTML;
         localStorage.setItem("botHtml",htmlTxt);
     chatConAgente();
- }
+ 
+}
 
 
  //FUNCION INICIAL CON LAS CREDENCILES DEL FLUJO DE AWS CONNECT
@@ -151,7 +155,7 @@ function crearParticipantConnection(token){
             this.enviarTexto( 'Se está conectando ' + contenido.DisplayName + ', quien te atenderá el día de hoy');
            
             agente = contenido.DisplayName + ": ";
-            chatStatus=true;
+            //chatStatus=true;
             chatStatusPages='1'
             setCookie("chatStatus", JSON.stringify('1'), 365); 
  
@@ -186,6 +190,7 @@ function crearParticipantConnection(token){
                 document.getElementById("botonTerminar").disabled = true;
                 //document.getElementById("botonIniciar").disabled = false;
                 document.getElementById("botonIniciar").disabled = true;
+                document.getElementById("botonTerminar").style.visibility="hidden";
             }
         
     }
@@ -298,7 +303,7 @@ function desconectarWebsocket(){
     }
             
     connectparticipant.disconnectParticipant(params, (err,data) => {
-        chatStatus=false
+       // chatStatus=false
         chatStatusPages='0';
         token=null;
         setCookie("chatStatus", JSON.stringify('0'), 365); 
@@ -309,10 +314,11 @@ function desconectarWebsocket(){
         document.getElementById("botonTerminar").disabled = true;
         //document.getElementById("botonIniciar").disabled = false;
         document.getElementById("botonIniciar").disabled = true;
+        document.getElementById("botonTerminar").style.visibility="hidden";
 
         if (err) console.log(err, err.stack);
             console.log(err,err.stack);
-            chatStatus=false
+           // chatStatus=false
             chatStatusPages='0';
             token=null;
             setCookie("chatStatus", JSON.stringify('0'), 365); 
@@ -335,19 +341,20 @@ function desconectarWebsocket(){
         document.getElementById("botonTerminar").disabled = true;
         //document.getElementById("botonIniciar").disabled = false;
         document.getElementById("botonIniciar").disabled = true;
+        document.getElementById("botonTerminar").style.visibility="hidden";
 
-        this.enviarTexto(  ' Te has desconectado. Que tengas un buen día' );
+        this.enviarTexto(  " La llamada ha terminado. Ahora esta hablando con Trinity. " );
         token = null;
         ws = null;
         agente = null;
-        chatStatus=false
+       // chatStatus=false
         chatStatusPages='0';
         setCookie("chatStatus", JSON.stringify('0'), 365); 
         participantToken=null;
         setCookie("participantToken", JSON.stringify(''), 365); 
 
         if (err) console.log(err, err.stack);
-            chatStatus=false
+           // chatStatus=false
             chatStatusPages='0';
             token=null;
             setCookie("chatStatus", JSON.stringify('0'), 365); 
@@ -357,6 +364,7 @@ function desconectarWebsocket(){
             document.getElementById("botonTerminar").disabled = true;
           //  document.getElementById("botonIniciar").disabled = false;
             document.getElementById("botonIniciar").disabled = true;
+            document.getElementById("botonTerminar").style.visibility="hidden";
     }) 
 }
 
