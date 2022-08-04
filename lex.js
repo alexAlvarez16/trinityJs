@@ -259,104 +259,46 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
         }
     }
 
+    localStorage.setItem("botHtml",htmlTxt)
 
-
-      localStorage.setItem("botHtml",htmlTxt)
-
-
-      if(typeof card.imageUrl === 'undefined' || card.imageUrl === null){
-          //return
-      }
-      else{
-          //Video
-          if (card.imageUrl.endsWith('mp4' || 'MP4' || 'MOV' || 'mov')) {
-          elem = document.createElement('span');
-          elem.className = 'videoUrl';
-          elem.innerHTML = "<video class=\"msg-video\" width='400' controls> <source src='" + card.imageUrl + "'> Tu navegador no soporta el video. </video>";
-          responsePara.appendChild(elem);
-          htmlTxt = document.getElementById('conversation').innerHTML;
-          localStorage.setItem("botHtml",htmlTxt)
-          }
-          //Imagenes
-          else {
-              elem = document.createElement('span');
-              elem.className = 'imageUrl';
-              elem.innerHTML = "<img src='"+card.imageUrl+"'  name=\"imagenLex\" data-toggle=\"modal\"  onclick=\"showImageModal('"+card.imageUrl+"' )\"  class=\"msg-image\" width=\'390px\' width=\'200px\'>";
-              //onclick=\"imagenAmpli()\"
-              responsePara.appendChild(elem);
-              htmlTxt = document.getElementById('conversation').innerHTML;
-            localStorage.setItem("botHtml",htmlTxt)
-          }
-      }
-
-          
-          if(card.attachmentLinkUrl=== 'undefined' || card.attachmentLinkUrl=== null){
-            htmlTxt = document.getElementById('conversation').innerHTML;
-            localStorage.setItem("botHtml",htmlTxt)
-              //return
-          }else{
-           if(card.attachmentLinkUrl.endsWith('mp4' || 'MP4' || 'MOV' || 'mov' || 'GIFT' || 'gift')){
-          // boton
-           elem = document.createElement('span');
-           elem.className = 'link';
-           elem.id='lexResponseButton'
-           elem.innerHTML = "<a href='" + card.attachmentLinkUrl + "' target=\"blank\" class=\"btn btn-success\">Ver video informativo</a>";
-           console.log(card.attachmentLinkUrl);
-           responsePara.appendChild(elem);
-           htmlTxt = document.getElementById('conversation').innerHTML;
-           localStorage.setItem("botHtml",htmlTxt)
-           return
-           }
-           if(card.attachmentLinkUrl.endsWith('pdf' || 'PDF' || 'ppt' || 'docx' || 'xlsx' || 'zip' )){
-           // boton
-           elem = document.createElement('span');
-           elem.className = 'link';
-           elem.id='lexResponseButton'
-           elem.innerHTML = "<a href='" + card.attachmentLinkUrl + "' target=\"blank\" class=\"btn btn-success\">Ver documentación</a>";
-           console.log(card.attachmentLinkUrl);
-           responsePara.appendChild(elem);
-           htmlTxt = document.getElementById('conversation').innerHTML;
-           localStorage.setItem("botHtml",htmlTxt) 
-           return
-           }                     
-           if(card.attachmentLinkUrl.endsWith('png' || 'PNG' || 'jpg' || 'JPG')){
-           return
-           }
-           if(card.attachmentLinkUrl.endsWith("/portal/") || card.attachmentLinkUrl=== "https://web.microsoftstream.com/video/aa2002c2-4b58-47c2-a091-106533286610" || card.attachmentLinkUrl==="https://degreed.com/account/login"){
-           // boton
-           elem = document.createElement('span');
-           elem.className = 'link';
-           elem.innerHTML = "<a href='" + card.attachmentLinkUrl + "' target=\"blank\" class=\"btn btn-success\">Ir a la liga</a>";
-           console.log(card.attachmentLinkUrl);
-           responsePara.appendChild(elem);
-           htmlTxt = document.getElementById('conversation').innerHTML;
-           localStorage.setItem("botHtml",htmlTxt)
-           }
-           htmlTxt = document.getElementById('conversation').innerHTML;
-           localStorage.setItem("botHtml",htmlTxt)
-          }
-
-          // options
-          if (card.buttons && card.buttons.length > 0) {
-          var optionsSpan = document.createElement('span');
-          optionsSpan.className = 'cardOptions';
-          responsePara.appendChild(optionsSpan);
-          // remember the responseCardOptions so we know if the user types one in
-          responseCardOptions = card.buttons;
-          for (var i = 0; i < card.buttons.length; i++) {if (window.CP.shouldStopExecution(1)) break;
-              var item = card.buttons[i];
-              elem = document.createElement('a');
-              elem.className = 'cardOption';
-              elem.href = '#';
-              elem.setAttribute('onclick', "postCardOption(\"" + item.text + "\", \"" + item.value + "\", this.parentNode); return false;");
-              elem.title = item.text;
-              elem.appendChild(document.createTextNode(item.text));
-              optionsSpan.appendChild(elem);
-          }window.CP.exitedLoop(1);
-          }
-
+    if(typeof card.imageUrl === 'undefined' || card.imageUrl === null){
+        //return
+    }
+    else{
+        //Video
+        if (card.imageUrl.endsWith('mp4' || 'MP4' || 'MOV' || 'mov')) {
+        elem = document.createElement('span');
+        elem.className = 'videoUrl';
+        elem.innerHTML = "<video class=\"msg-video\" width='400' controls> <source src='" + card.imageUrl + "'> Tu navegador no soporta el video. </video>";
+        responsePara.appendChild(elem);
         htmlTxt = document.getElementById('conversation').innerHTML;
         localStorage.setItem("botHtml",htmlTxt)
+        }
+        //Imagenes
+        else {
+            elem = document.createElement('span');
+            elem.className = 'imageUrl';
+            elem.innerHTML = "<img src='"+card.imageUrl+"'  name=\"imagenLex\" data-toggle=\"modal\"  onclick=\"showImageModal('"+card.imageUrl+"' )\"  class=\"msg-image\" width=\'390px\' width=\'200px\'>";
+            //onclick=\"imagenAmpli()\"
+            responsePara.appendChild(elem);
+            htmlTxt = document.getElementById('conversation').innerHTML;
+            localStorage.setItem("botHtml",htmlTxt)
+        }
+    }
+    // boton link
+    if(typeof card.attachmentLinkUrl === 'undefined' || card.attachmentLinkUrl === null){
+      //  return
+    }else{
+            elem = document.createElement('span');
+            elem.className = 'link';
+            elem.innerHTML = "<a href='" + card.attachmentLinkUrl + "'class=\"cardOption\" target=\"_blank\">Ver Liga</a>";
+            responsePara.appendChild(elem);
+            htmlTxt = document.getElementById('conversation').innerHTML;
+            localStorage.setItem("botHtml",htmlTxt)
+    }
+
+    htmlTxt = document.getElementById('conversation').innerHTML;
+    localStorage.setItem("botHtml",htmlTxt)
 
   } 
   
