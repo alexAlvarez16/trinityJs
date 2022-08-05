@@ -10,6 +10,7 @@ let cfgAWSInstanceId='ffc7cb15-45c9-4a6e-ade6-926090dfa1fe';
 let cfgAWSIdentityPoolId = 'us-east-1:22ae9aac-d9ed-406b-9330-646907cc8262';
 let cfgAWSbotAlias =  'Dev';
 let cfgAWSbotName =  'Trinity';
+let cfgAWSbotUserId= 'chatbot-demo' + Date.now();
 
 let cfgTypingInterval =  120000; //Tiempo en ms para el envio de evento typing entre agente y usuario
 let cfgCloseConnectConection =300000 ;//Tiempo en ms para desconectar automaticamente la llamada pendiente a AWS CONNECT

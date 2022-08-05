@@ -39,7 +39,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   });
 //alert(AWS.config.region);
 var lexruntime = new AWS.LexRuntime();
-var lexUserId = 'chatbot-demo' + Date.now();
+var lexUserId =cfgAWSbotUserId;
 var sessionAttributes = {};
 var responseCardOptions = null;
 
