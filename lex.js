@@ -2,38 +2,19 @@ function enviarAyuda(textToPush, labelToShow, shouldHideRequest){
     var wisdomText = "Ayuda";
     // send it to the Lex runtime
     var params = {
-    botAlias:  cfgAWSbotAlias,
-    botName: cfgAWSbotName,    
+    botAlias:  'DEV',
+    botName: 'Trinity',    
     // if the caller has specifically provided text to be pushed, use it
     inputText: textToPush ? textToPush : wisdomText,
     userId: lexUserId,
-    sessionAttributes: sessionAttributes };
+    sessionAttributes: {
+        userFullName:document.getElementById('usrFullName').innerHTML,
+        userFirstName:document.getElementById('usrFirstName').innerHTML,
+        userEmail: document.getElementById('usrEmail').innerHTML
 
-    // if the caller has specifically provided a label to be shown, show it
-    if (!shouldHideRequest) {
-    showRequest(labelToShow ? labelToShow : wisdomText);
     }
-    lexruntime.postText(params, function (err, data) {
-    if (err) {
-    showError('Oh uh, ocurrio un error de conexión, por favor intentalo más tarde.');
-    }
-    if (data) {
-        // check for missed utterances
-        checkForMissedUtterances(data);
-        // capture the sessionAttributes for the next cycle
-        sessionAttributes = data.sessionAttributes;
-        // reset the responseCardOptions
-        responseCardOptions = null;
-        // show response and/or error/dialog status
-        showResponse(data);
-    }
-    // re-enable input
-    wisdomText.value = '';
-    wisdomText.locked = false;
-    });
-    // we always cancel form submission
-    return false;
-}
+};
+
      
 
 
@@ -94,7 +75,7 @@ function pushChat(textToPush, labelToShow, shouldHideRequest) {
                     i = responseCardOptions.length + 1;
                     }
               
-                }//window.CP.exitedLoop(0);
+                }window.CP.exitedLoop(0);
                 }
                 // send it to the Lex runtime
                 var params = {
